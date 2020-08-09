@@ -1,14 +1,23 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2"
+        }
+    }
+
+    dependencies {
+        classpath "io.franzbecker:gradle-lombok:3.1.0"
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+
+    }
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'io.franzbecker.gradle-lombok'
+    apply plugin: "io.qameta.allure"
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    repositories {
+        jcenter()
+    }
 }

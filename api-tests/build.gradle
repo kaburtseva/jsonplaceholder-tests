@@ -7,8 +7,44 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    jcenter()
+}
+sourceCompatibility = 1.8
+
+ext {
+    restAssuredVersion = '3.3.0'
+    testNgVersion = '6.13'
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "io.rest-assured:rest-assured:$restAssuredVersion"
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.0'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '0.9.26'
+    compile group: 'org.aeonbits.owner', name: 'owner', version: '1.0.10'
+    compile group: 'io.qameta.allure', name: 'allure-rest-assured', version: '2.12.1'
+    compile group: 'ru.yandex.qatools.allure', name: 'allure-testng-adaptor', version: '1.5.4'
+    testCompile "org.testng:testng:$testNgVersion"
+    testImplementation 'io.cucumber:cucumber-java:6.2.2'
+}
+
+test {
+    useTestNG()
+    systemProperties System.getProperties()
+
+    testLogging() {
+        events "PASSED", "FAILED", "SKIPPED"
+        showStandardStreams = true
+        exceptionFormat = "full"
+    }
+
+    test.outputs.upToDateWhen { false }
+}
+
+allure {
+    version = '2.8.1'
+    aspectjweaver = true
+    configuration = 'compile'
+    autoconfigure = true
 }
