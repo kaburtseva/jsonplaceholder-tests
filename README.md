@@ -29,7 +29,7 @@ will be located here jsonplaceholder-tests/api-tests/build/reports/allure-report
 ```
 Latest report:
 ![Screenshot 2020-08-09 at 22 14 34](https://user-images.githubusercontent.com/8155318/89740434-4e7ab880-da91-11ea-83e2-52b736ec7cfe.png)
-![Screenshot 2020-08-09 at 22 15 07](https://user-images.githubusercontent.com/8155318/89740437-5175a900-da91-11ea-88eb-afaf2a548c0d.png)
+![Screenshot 2020-08-09 at 22 44 54](https://user-images.githubusercontent.com/8155318/89740527-060fca80-da92-11ea-9852-e9773ec8be8a.png)
 
 # TODO
 * add BDD support (e.g Cucumber)
@@ -45,6 +45,5 @@ gradle --stop
 - invalidate cache and restart
 - try 
 ```gradle build
-```
 
 
