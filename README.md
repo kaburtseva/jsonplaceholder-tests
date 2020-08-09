@@ -46,7 +46,8 @@ gradle --stop
 ```
 - invalidate cache and restart
 - try 
-```gradle build
+```
+gradle build
 ```
 
 
