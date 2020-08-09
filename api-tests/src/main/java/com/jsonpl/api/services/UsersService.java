@@ -15,7 +15,8 @@ public class UsersService extends BaseApiService {
                 .orElseThrow(()->new IllegalArgumentException("No such user in list"));
     }
 
-    private List<Users> getAllUsers() {
+    @Step("getting all users")
+    public List<Users> getAllUsers() {
         return setUp()
                 .when()
                 .get("/users")

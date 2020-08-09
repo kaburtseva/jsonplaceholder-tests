@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class CommentsService extends BaseApiService {
 
+    @Step("getting all email adress for post with id {post}")
     public Set<String> getAllEmailAddresses(String post) {
         Set<String> emailForTheCurrenComment = new HashSet<>();
         getAllCommentsForThePost(post).stream().forEach(it -> emailForTheCurrenComment.add(it.email));

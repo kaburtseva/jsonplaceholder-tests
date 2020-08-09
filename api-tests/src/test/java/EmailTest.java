@@ -8,11 +8,11 @@ import com.jsonpl.api.services.UsersService;
 import io.qameta.allure.Issue;
 import io.restassured.RestAssured;
 import org.aeonbits.owner.ConfigFactory;
+import org.assertj.core.api.SoftAssertions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class EmailTest {
     PostService postService = new PostService();
     CommentsService commentsService = new CommentsService();
     EmailDomainService emailDomainService = new EmailDomainService();
-    SoftAssert softAssert = new SoftAssert();
+    private SoftAssertions softAssertions = new SoftAssertions();
 
     @BeforeClass
     public void setUp() {
@@ -35,9 +35,9 @@ public class EmailTest {
         return new Object[][]{{"Delphine"}, {"Kamren"}};
     }
 
-    @Test(description = "Verify if email address has correct format for username {username}", dataProvider = "username")
-    void verifyEmailFormat(String username) {
-        Users user = apiService.findUserIdByName(username);
+    @Test(description = "Verify if email address has correct format for username {userName}", dataProvider = "username")
+    void verifyEmailFormat(String userName) {
+        Users user = apiService.findUserIdByName(userName);
         List<Posts> posts = postService.getAllPostsByUser(String.valueOf(user.id));
         Assert.assertTrue(!posts.isEmpty(), "No posts for current user");
         posts.forEach(post ->
@@ -49,18 +49,18 @@ public class EmailTest {
 
     }
 
-    @Test(description = "Verify if email address has correct format for username {username}: with valid domains", dataProvider = "username")
+    @Test(description = "Verify if email address has correct format: with valid domains")
     @Issue("Not all domains are reachable")
-    public void verifyEmailDomains(String username) {
+    public void verifyEmailDomains() {
         Users user = apiService.findUserIdByName("Delphine");
         postService.getAllPostsByUser(String.valueOf(user.id)).forEach(
                 post -> commentsService.getAllEmailAddresses(String.valueOf(post.id)).forEach(
                         email ->
-                                softAssert.assertEquals(emailDomainService.verifyDomainEmail(email), "200",
-                                        email + "email has unreachable domain based for post with id " + post.id)
+                                softAssertions.assertThat(emailDomainService.verifyDomainEmail(email)).contains("200")
+                                        .withFailMessage("email has unreachable domain based for post with id " + post.id)
                 )
-
         );
-        softAssert.assertAll();
+
+        softAssertions.assertAll();
     }
 }

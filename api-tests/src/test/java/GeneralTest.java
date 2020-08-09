@@ -1,5 +1,4 @@
 import com.jsonpl.api.ProjectConfig;
-import com.jsonpl.api.models.Posts;
 import com.jsonpl.api.models.Users;
 import com.jsonpl.api.services.CommentsService;
 import com.jsonpl.api.services.PostService;
@@ -9,7 +8,6 @@ import org.aeonbits.owner.ConfigFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.util.List;
@@ -17,7 +15,6 @@ import java.util.stream.Collectors;
 
 public class GeneralTest {
 
-    UsersService userApiService = new UsersService();
     PostService postService = new PostService();
     CommentsService commentsService = new CommentsService();
 
@@ -50,7 +47,14 @@ public class GeneralTest {
         Users user = userApiService.findUserIdByName("Delphine");
         List<Integer> post = postService.getAllPostsByUser(String.valueOf(user.id))
                 .stream().map(x -> x.id).collect(Collectors.toList());
-       Assert.assertEquals(post.size(), post.stream().distinct().count(),"Post ids aren't unique");
+        Assert.assertEquals(post.size(), post.stream().distinct().count(), "Post ids aren't unique");
+    }
+
+    @Test(description = "Verify that all user ids are unique")
+    public void getAllUserIds() {
+        UsersService userApiService = new UsersService();
+        List<Integer> userId = userApiService.getAllUsers().stream().map(it->it.id).collect(Collectors.toList());
+        Assert.assertEquals(userId.size(), userId.stream().distinct().count(), "User ids aren't unique");
     }
 }
 

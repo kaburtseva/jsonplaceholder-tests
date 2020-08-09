@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class BaseApiService {
-    protected RequestSpecification setUp(){
+    protected RequestSpecification setUp() {
         return RestAssured
                 .given()
                 .contentType(ContentType.JSON)
