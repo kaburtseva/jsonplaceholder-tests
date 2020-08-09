@@ -8,7 +8,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.socks" level="INFO" additivity="false">
+    <logger name="com.jsonpl" level="INFO" additivity="false">
         <appender-ref ref="STDOUT" />
     </logger>
 

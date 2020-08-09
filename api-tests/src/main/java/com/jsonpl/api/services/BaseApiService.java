@@ -1,6 +1,6 @@
 package com.jsonpl.api.services;
 
-import com.jsonplaceholder.api.ProjectConfig;
+import com.jsonpl.api.ProjectConfig;
 import io.qameta.allure.restassured.AllureRestAssured;
 import io.restassured.RestAssured;
 import io.restassured.filter.Filter;
