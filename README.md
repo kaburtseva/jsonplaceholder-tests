@@ -34,6 +34,8 @@ Latest report:
 # TODO
 * add BDD support (e.g Cucumber)
 * extend existing coverage
+* add Spring
+* add more detailed logging by @Slf4j
 
 # Troubleshooting
 
@@ -45,5 +47,7 @@ gradle --stop
 - invalidate cache and restart
 - try 
 ```gradle build
+```
+
 
 
