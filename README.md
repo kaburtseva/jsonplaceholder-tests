@@ -50,5 +50,13 @@ gradle --stop
 gradle build
 ```
 
+# CircleCI run results
+
+Please note: build failed such as there is a bug in jsonplaceholder.
+
+![Screenshot 2020-08-09 at 22 58 54](https://user-images.githubusercontent.com/8155318/89755849-7c8be700-dae9-11ea-92e0-65b29d49b4c4.png)
+![Screenshot 2020-08-09 at 22 59 07](https://user-images.githubusercontent.com/8155318/89755852-7eee4100-dae9-11ea-86e2-927af37969d1.png)
+
+
 
 
