@@ -57,11 +57,6 @@ gradle --stop
 gradle build
 ```
 
-# CircleCI run results
-
-Please note: build failed such as there is a bug in jsonplaceholder.
-
-
 #Postman collection
 Can be found by link https://www.getpostman.com/collections/0ccf1f60ed142fac23a7
 or as json at ./jsonplaceholder-tests/JsonPlaceholder collection.postman_collection.json
