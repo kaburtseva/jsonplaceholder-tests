@@ -1,3 +1,7 @@
+
+# Description
+Basic api tests for jsonplaceholder https://jsonplaceholder.typicode.com/
+
 # Environment
 * Java 8+
 * Gradle
@@ -28,8 +32,11 @@ will be located here jsonplaceholder-tests/api-tests/build/reports/allure-report
  allure serve allure-results
 ```
 Latest report:
-![Screenshot 2020-08-09 at 22 14 34](https://user-images.githubusercontent.com/8155318/89740434-4e7ab880-da91-11ea-83e2-52b736ec7cfe.png)
-![Screenshot 2020-08-09 at 22 44 54](https://user-images.githubusercontent.com/8155318/89740527-060fca80-da92-11ea-9852-e9773ec8be8a.png)
+![Screenshot 2021-08-29 at 19.51.46.png](api-tests/src/main/resources/Screenshot 2021-08-29 at 19.51.46.png)
+
+![Screenshot 2021-08-29 at 19.52.08.png](api-tests/src/main/resources/Screenshot 2021-08-29 at 19.52.08.png)
+
+All failed tests related to issues (marked @Issue in tests)
 
 # TODO
 * add BDD support (e.g Cucumber)
@@ -54,9 +61,9 @@ gradle build
 
 Please note: build failed such as there is a bug in jsonplaceholder.
 
-![Screenshot 2020-08-09 at 22 58 54](https://user-images.githubusercontent.com/8155318/89755849-7c8be700-dae9-11ea-92e0-65b29d49b4c4.png)
-![Screenshot 2020-08-09 at 22 59 07](https://user-images.githubusercontent.com/8155318/89755852-7eee4100-dae9-11ea-86e2-927af37969d1.png)
 
-
+#Postman collection
+Can be found by link https://www.getpostman.com/collections/0ccf1f60ed142fac23a7
+or as json at ./jsonplaceholder-tests/JsonPlaceholder collection.postman_collection.json
 
 

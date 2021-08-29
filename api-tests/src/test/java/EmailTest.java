@@ -38,10 +38,10 @@ public class EmailTest {
     @Test(description = "Verify if email address has correct format for username {userName}", dataProvider = "username")
     void verifyEmailFormat(String userName) {
         Users user = apiService.findUserIdByName(userName);
-        List<Posts> posts = postService.getAllPostsByUser(String.valueOf(user.id));
+        List<Posts> posts = postService.getAllPostsByUser(user.id);
         Assert.assertTrue(!posts.isEmpty(), "No posts for current user");
         posts.forEach(post ->
-                commentsService.getAllCommentsForThePost(String.valueOf(post.id))
+                commentsService.getAllCommentsForThePost(post.id)
                         .forEach(comment ->
                                 Assert.assertTrue(emailDomainService.isEmailHasCorrectFormat(comment.email),
                                         comment.email + "has invalid format")
@@ -53,8 +53,8 @@ public class EmailTest {
     @Issue("Not all domains are reachable")
     public void verifyEmailDomains() {
         Users user = apiService.findUserIdByName("Delphine");
-        postService.getAllPostsByUser(String.valueOf(user.id)).forEach(
-                post -> commentsService.getAllEmailAddresses(String.valueOf(post.id)).forEach(
+        postService.getAllPostsByUser(user.id).forEach(
+                post -> commentsService.getAllEmailAddresses(post.id).forEach(
                         email ->
                                 softAssertions.assertThat(emailDomainService.verifyDomainEmail(email)).contains("200")
                                         .withFailMessage("email has unreachable domain based for post with id " + post.id)
